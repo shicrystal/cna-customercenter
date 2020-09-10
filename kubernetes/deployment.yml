@@ -1,37 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: CustomerCenter
+  name: customercenter
   labels:
-    app: CustomerCenter
+    app: customercenter
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: CustomerCenter
+      app: customercenter
   template:
     metadata:
       labels:
-        app: CustomerCenter
+        app: customercenter
     spec:
       containers:
-        - name: CustomerCenter
-          image: username/CustomerCenter:latest
+        - name: customercenter
+          image: admin11acr.azurecr.io/customercenter
           ports:
             - containerPort: 8080
-          readinessProbe:
-            httpGet:
-              path: '/actuator/health'
-              port: 8080
-            initialDelaySeconds: 10
-            timeoutSeconds: 2
-            periodSeconds: 5
-            failureThreshold: 10
-          livenessProbe:
-            httpGet:
-              path: '/actuator/health'
-              port: 8080
-            initialDelaySeconds: 120
-            timeoutSeconds: 2
-            periodSeconds: 5
-            failureThreshold: 5
+#           readinessProbe:
+#             httpGet:
+#               path: '/actuator/health'
+#               port: 8080
+#             initialDelaySeconds: 10
+#             timeoutSeconds: 2
+#             periodSeconds: 5
+#             failureThreshold: 10
+#           livenessProbe:
+#             httpGet:
+#               path: '/actuator/health'
+#               port: 8080
+#             initialDelaySeconds: 120
+#             timeoutSeconds: 2
+#             periodSeconds: 5
+#             failureThreshold: 5
